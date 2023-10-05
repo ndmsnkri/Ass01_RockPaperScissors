@@ -5,6 +5,13 @@ public class Main {
         Scanner in = new Scanner(System.in);
         String playAgain;
 
+        System.out.println("Welcome to the game !!");
+        System.out.println();
+        System.out.println("R is for Rock");
+        System.out.println("P is for Paper");
+        System.out.println("S is for Scissors");
+        System.out.println();
+
         do {
             // Get move choice from playerA
             String playerA;
@@ -43,9 +50,9 @@ public class Main {
             } else if ((playerA.equalsIgnoreCase("R") && playerB.equalsIgnoreCase("S")) ||
                     (playerA.equalsIgnoreCase("P") && playerB.equalsIgnoreCase("R")) ||
                     (playerA.equalsIgnoreCase("S") && playerB.equalsIgnoreCase("P"))) {
-                result = "Player A wins!";
+                result = "Congratulations !!! Player A wins!";
             } else {
-                result = "Player B wins!";
+                result = "Congratulations !!! Player B wins!";
             }
             // Display the result
             System.out.println(result);
