@@ -1,17 +1,61 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner in = new Scanner(System.in);
+        String playAgain;
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        do {
+            // Get move choice from playerA
+            String playerA;
+            do {
+                System.out.print("Player A, enter your move (R/P/S): ");
+                playerA = in.nextLine();
+                if (!playerA.equalsIgnoreCase("R") && !playerA.equalsIgnoreCase("P") && !playerA.equalsIgnoreCase("S")) {
+                    System.out.println("Invalid input. Please enter R, P, or S.");
+                }
+            } while (!playerA.equalsIgnoreCase("R") && !playerA.equalsIgnoreCase("P") && !playerA.equalsIgnoreCase("S"));
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+            // Get move choice from playerB
+            String playerB;
+            do {
+                System.out.print("Player B, enter your move (R/P/S): ");
+                playerB = in.nextLine();
+                if (!playerB.equalsIgnoreCase("R") && !playerB.equalsIgnoreCase("P") && !playerB.equalsIgnoreCase("S")) {
+                    System.out.println("Invalid input. Please enter R, P, or S.");
+                }
+            } while (!playerB.equalsIgnoreCase("R") && !playerB.equalsIgnoreCase("P") && !playerB.equalsIgnoreCase("S"));
+
+            System.out.println();
+
+            if (playerA.equalsIgnoreCase("R") && playerB.equalsIgnoreCase("S")) {
+                System.out.println("Rock breaks Scissors");
+            } else if (playerA.equalsIgnoreCase("S") && playerB.equalsIgnoreCase("P")) {
+                System.out.println("Scissors cuts Paper");
+            } else if (playerA.equalsIgnoreCase("P") && playerB.equalsIgnoreCase("R")) {
+                System.out.println("Paper covers Rock");
+            }
+
+            // Determine the winner
+            String result;
+            if (playerA.equalsIgnoreCase(playerB)) {
+                result = "It's a Tie!";
+            } else if ((playerA.equalsIgnoreCase("R") && playerB.equalsIgnoreCase("S")) ||
+                    (playerA.equalsIgnoreCase("P") && playerB.equalsIgnoreCase("R")) ||
+                    (playerA.equalsIgnoreCase("S") && playerB.equalsIgnoreCase("P"))) {
+                result = "Player A wins!";
+            } else {
+                result = "Player B wins!";
+            }
+            // Display the result
+            System.out.println(result);
+
+            System.out.println();
+
+            System.out.print("Play again? (Y/N): ");
+            playAgain = in.nextLine();
+        } while (playAgain.equalsIgnoreCase("Y"));
+
+        System.out.println("Thanks for playing!");
     }
 }
